@@ -345,6 +345,10 @@ func syncResources(rsResources []rsResource, awsResources []awsResource, resourc
 				queryParam := rsGetUpdateParam(resourceType)
 				rsName := rs_resource.Name
 				awsName := aws_resource.Name
+                if rsName == awsName {
+                    fmt.Printf("No need to update Rightscale %v from %v to %v\n", resourceType, rsName, awsName)
+                    continue
+                }
 				updateParams := rsUpdateParams{href: href, queryParam: queryParam, oldValue: rsName, newValue: awsName}
 				returnValue := rsUpdate(updateParams)
 				if returnValue {
