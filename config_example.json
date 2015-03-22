@@ -1,0 +1,7 @@
+{
+  "rs_oauth_token": "XXXXXXXXXXXXXXXXXXXXXXXXX",
+  "rs_endpoint": "https://us-3.rightscale.com",
+  "aws_access_key": "AKIAXXXXXXXXXXXXXXXX",
+  "aws_secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "aws_region": "us-east-1"
+}
