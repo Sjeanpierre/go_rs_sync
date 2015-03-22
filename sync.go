@@ -451,7 +451,6 @@ func main() {
 	kingpin.Parse()
 	loadedConfig := loadConfigFile(*configFile)
 	loadCredentials(&loadedConfig)
-	p(vpcID)
 	rsNetworks := rsNetworks()
 	rs_network := rsSelectNetwork(rsNetworks, *vpcID)
 	aws_network := awsVpc(*vpcID)
