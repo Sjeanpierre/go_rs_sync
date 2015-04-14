@@ -75,8 +75,21 @@ func rsExtractRsResourceHref(resourceLinks []rsLinks) string {
     return resourceHref
 }
 
-func rsSubnets(networkHref string) []rsResource {
-    url := "/api/clouds/1/subnets.json"
+func rsExtractNetworkCloudHref(resourceLinks []rsLinks) string{
+    resourceHref := ""
+    for _, link := range resourceLinks {
+        if link.Rel == "cloud" {
+            resourceHref = link.Href
+            break
+        }
+    }
+    return resourceHref
+}
+
+func rsSubnets(networkHref string, cloudHref string) []rsResource {
+    cloudHrefParts := strings.Split(cloudHref,"/")
+    cloudID := cloudHrefParts[len(cloudHrefParts)-1]
+    url := "/api/clouds/" +cloudID+ "/subnets.json"
     filter := "?filter[]=network_href=="
     fullURL := strings.Join([]string{url, filter, networkHref}, "")
     RequestParams := rsRequestParams{method: "GET", url: fullURL}
