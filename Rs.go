@@ -61,6 +61,10 @@ func rsSelectNetwork(rsNetworkList []rsResource, vpcID string) rsResource {
             break
         }
     }
+    if rsNetwork.ResourceID != vpcID {
+        p("Could not locate specified VPC in Rightscale")
+        os.Exit(1)
+    }
     return rsNetwork
 }
 
