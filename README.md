@@ -10,7 +10,7 @@ Supports the syncing of
 * Internet Gateway Names
 
 ```
-usage: go_rs_sync --vpc=VPC [<flags>]
+usage: ./go_rs_sync --vpc=VPC [<flags>]
 Flags:
   --help         Show help.
   -v, --vpc=VPC  Id of the VPC to sync with Rightscale
