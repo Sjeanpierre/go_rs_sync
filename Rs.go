@@ -53,8 +53,7 @@ func rsNetworks() []rsResource {
     return networks
 }
 
-func rsSelectNetwork(rsNetworkList []rsResource, vpcID string) rsResource {
-    var rsNetwork rsResource
+func rsSelectNetwork(rsNetworkList []rsResource, vpcID string) (rsNetwork rsResource) {
     for _, network := range rsNetworkList {
         if network.ResourceID == vpcID {
             rsNetwork = network
@@ -65,32 +64,30 @@ func rsSelectNetwork(rsNetworkList []rsResource, vpcID string) rsResource {
         p("Could not locate specified VPC in Rightscale")
         os.Exit(1)
     }
-    return rsNetwork
+    return
 }
 
-func rsExtractRsResourceHref(resourceLinks []rsLinks) string {
-    resourceHref := ""
+func rsExtractRsResourceHref(resourceLinks []rsLinks) (resourceHref string) {
     for _, link := range resourceLinks {
         if link.Rel == "self" {
             resourceHref = link.Href
             break
         }
     }
-    return resourceHref
+    return
 }
 
-func rsExtractNetworkCloudHref(resourceLinks []rsLinks) string{
-    resourceHref := ""
+func rsExtractNetworkCloudHref(resourceLinks []rsLinks) (resourceHref string) {
     for _, link := range resourceLinks {
         if link.Rel == "cloud" {
             resourceHref = link.Href
             break
         }
     }
-    return resourceHref
+    return
 }
 
-func rsSubnets(networkHref string, cloudHref string) []rsResource {
+func rsSubnets(networkHref string, cloudHref string) (subnets []rsResource) {
     cloudHrefParts := strings.Split(cloudHref,"/")
     cloudID := cloudHrefParts[len(cloudHrefParts)-1]
     url := "/api/clouds/" +cloudID+ "/subnets.json"
@@ -98,34 +95,31 @@ func rsSubnets(networkHref string, cloudHref string) []rsResource {
     fullURL := strings.Join([]string{url, filter, networkHref}, "")
     RequestParams := rsRequestParams{method: "GET", url: fullURL}
     RSResponse := rsRequest(RequestParams)
-    var subnets []rsResource
     SubnetJSON := []byte(RSResponse)
     json.Unmarshal(SubnetJSON, &subnets)
-    return subnets
+    return
 }
 
-func rsInternetGateways(networkHref string) []rsResource {
+func rsInternetGateways(networkHref string) (internetGateways []rsResource) {
     url := "/api/network_gateways.json"
     filter := "?filter[]=network_href=="
     fullURL := strings.Join([]string{url, filter, networkHref}, "")
     RequestParams := rsRequestParams{method: "GET", url: fullURL}
     RSResponse := rsRequest(RequestParams)
-    var internetGateways []rsResource
     InternetGatewayJSON := []byte(RSResponse)
     json.Unmarshal(InternetGatewayJSON, &internetGateways)
-    return internetGateways
+    return
 }
 
-func rsRouteTables(networkHref string) []rsResource {
+func rsRouteTables(networkHref string) (routeTables []rsResource) {
     url := "/api/route_tables.json"
     filter := "?filter[]=network_href=="
     fullURL := strings.Join([]string{url, filter, networkHref}, "")
     RequestParams := rsRequestParams{method: "GET", url: fullURL}
     RSResponse := rsRequest(RequestParams)
-    var routetables []rsResource
     RouteTableJSON := []byte(RSResponse)
-    json.Unmarshal(RouteTableJSON, &routetables)
-    return routetables
+    json.Unmarshal(RouteTableJSON, &routeTables)
+    return
 }
 
 func rsBearerToken() string {
@@ -225,8 +219,7 @@ func rsUpdate(UpdateParams rsUpdateParams) bool {
     return false
 }
 
-func rsGetUpdateParam(resourceType string) string {
-    updateParam := ""
+func rsGetUpdateParam(resourceType string) (updateParam string) {
     switch resourceType {
         case "network":
         updateParam = "?network[name]="
@@ -237,5 +230,5 @@ func rsGetUpdateParam(resourceType string) string {
         case "routetable":
         updateParam = "?route_table[name]="
     }
-    return updateParam
+    return
 }

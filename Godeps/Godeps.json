@@ -1,22 +1,50 @@
 {
-	"ImportPath": "github.com/Sjeanpierre/go_rs_sync",
-	"GoVersion": "go1.4.2",
+	"ImportPath": "github.com/sjeanpierre/go_rs_sync",
+	"GoVersion": "go1.7.3",
 	"Deps": [
 		{
 			"ImportPath": "github.com/alecthomas/units",
 			"Rev": "6b4e7dc5e3143b85ea77909c72caf89416fc2915"
 		},
 		{
-			"ImportPath": "github.com/mitchellh/goamz/aws",
-			"Rev": "caaaea8b30ee15616494ee68abd5d8ebbbef05cf"
+			"ImportPath": "github.com/aws/aws-sdk-go/aws",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
 		},
 		{
-			"ImportPath": "github.com/mitchellh/goamz/ec2",
-			"Rev": "caaaea8b30ee15616494ee68abd5d8ebbbef05cf"
+			"ImportPath": "github.com/aws/aws-sdk-go/private/endpoints",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
 		},
 		{
-			"ImportPath": "github.com/vaughan0/go-ini",
-			"Rev": "a98ad7ee00ec53921f08832bc06ecf7fd600e6a1"
+			"ImportPath": "github.com/aws/aws-sdk-go/private/protocol",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
+		},
+		{
+			"ImportPath": "github.com/aws/aws-sdk-go/private/signer/v4",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
+		},
+		{
+			"ImportPath": "github.com/aws/aws-sdk-go/private/waiter",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
+		},
+		{
+			"ImportPath": "github.com/aws/aws-sdk-go/service/ec2",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
+		},
+		{
+			"ImportPath": "github.com/aws/aws-sdk-go/vendor/github.com/go-ini/ini",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
+		},
+		{
+			"ImportPath": "github.com/aws/aws-sdk-go/vendor/github.com/jmespath/go-jmespath",
+			"Comment": "v1.1.32-1-g1608a1f",
+			"Rev": "1608a1f6ffe7f327007d2aca50ebf1d26c285ef2"
 		},
 		{
 			"ImportPath": "gopkg.in/alecthomas/kingpin.v1",
