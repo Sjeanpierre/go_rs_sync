@@ -18,6 +18,4 @@ Flags:
       rs_oauth_token - (required)
       rs_endpoint - (optional, defaults to my.rightscale.com)
       aws_region - (required)
-      aws_access_key - (optional,if not provided ENV varibles or ~/.aws/credentials will be used)
-      aws_secret_key - (optional,if not provided ENV varibles or ~/.aws/credentials will be used)
 ```
